@@ -1,3 +1,5 @@
+# Exercício de Implementação de Classes em Python
+
 class Circulo:
     def __init__(self,raio):
         self.raio = raio

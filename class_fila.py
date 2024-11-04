@@ -1,4 +1,5 @@
 
+# Implementação da estrutura Fila em Python
 # Filas FIFO: 'First-in First-out' (Primeiro a chegar, primeiro a sair)
 # Permite chaves repetidas
 # Remove sempre no início, insere sempre no final
