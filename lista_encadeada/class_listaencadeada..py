@@ -1,11 +1,7 @@
 
-# Implementação de Alocação Dinâmica (Lista Encadeada)
+# Implementação Lista com alocação dinâmica (Lista Encadeada)
 
-class no:
-    def __init__(self, x):
-        self.dado = x
-        self.prox = None
-
+from no import No
 
 class Lista:
     def __init__(self, tammax):
