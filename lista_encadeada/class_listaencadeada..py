@@ -47,15 +47,29 @@ class Lista:
         return (p != None)
 
     def remove(self, x):
-        if (self.consulta(x) or self.nelems == 0):
+        if (self.consulta(x) == False): # se x não está na lista retorna False
             return False
+
+        if self.prim.dado == x: # verifica se x é o primeiro nó da lista e remove
+            self.prim = self.prim.prox
+            self.nelems -= 1
+            return True
+            
+        p = self.prim  
+        while p.prox != None: # remove se x em outra posição
+            if p.prox.dado == x:
+                p.prox = p.prox.prox
+                self.nelems -= 1
+                return True
+            p = p.prox
         
         
 l = Lista(7)
-l.inserefinal(3)
-l.insereinicio(5)
-print(l.consulta(5)) # retorna True
-print(l.consulta(4)) # retorna False
+l.insereinicio(3)
+l.insereinicio(4)
+print(l.consulta(4)) # retorna True
+print(l.consulta(5)) # retorna False
+print(l.remove(4)) # retorna True
 
 
         
