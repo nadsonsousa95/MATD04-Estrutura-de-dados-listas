@@ -25,8 +25,9 @@ class Lista:
         return True
 
     def remove(self, x):
-        return False
-
+        if (self.consulta(x)):
+            return False
+        
 
         
 # Casos: (1. Lista vazia 
