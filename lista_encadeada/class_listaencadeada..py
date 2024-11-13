@@ -2,7 +2,6 @@
 # Implementação Lista com alocação dinâmica (Lista Encadeada)
 
 from no import No
-
 class Lista:
     def __init__(self, tammax):
         self.tammax = tammax
@@ -24,11 +23,7 @@ class Lista:
         self.nelems += 1
         return True
 
-    def remove(self, x):
-        return False
-
-
-        
+     
 # Casos: (1. Lista vazia 
 # 1.1 Lista tem espaço -> True), 
 # (2. Lista não vazia 
