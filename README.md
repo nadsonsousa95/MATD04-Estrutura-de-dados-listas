@@ -1,6 +1,7 @@
 # Listas de Exercícios - Estrutura de Dados 2024.2
 
 Bem-vindo ao repositório de exercícios da disciplina **Estrutura de Dados**. Este repositório foi criado para consolidar o aprendizado dos conceitos fundamentais de Estrutura de Dados, com foco em **Listas, Filas, Pilhas, Listas com Alocação Dinâmica e Listas Duplamente Encadeadas**. 
+Professor: Flávio Moraes
 
 ## Estrutura do Repositório
 
