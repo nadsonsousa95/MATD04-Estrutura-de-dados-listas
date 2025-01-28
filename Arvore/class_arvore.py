@@ -5,9 +5,21 @@ class No:
         self.dir = None
         self.esq = None
 
-class arvore:
+class Arvorebinaria:
     def __init__(self):
         self.raiz = None
+
+    def buscaIterativa(self, x):
+        r = self.raiz
+        while (r != None) and (r.dado != x):
+            if x < r.dado:
+                r = r.esq
+            else:
+                r = r.dir
+        if r == None: 
+            return False
+        else: return True, x        
+        
 
     def insere(self, x):
         if self.raiz == None:
@@ -21,14 +33,19 @@ class arvore:
             if no_atual.esq == None:
                 no_atual.esq = No(x)
             else:
-                self._inserir_recursivo(x, no_atual.esq)
+                self.insere_recursivo(x, no_atual.esq)
         else:
             if no_atual.dir == None:
                 no_atual.dir = No(x)
             else:
-                self._inserir_recursivo(x, no_atual.dir)
+                self.insere_recursivo(x, no_atual.dir)
 
         
-
-#Busca por um nó com chave k com raiz em x
+a = Arvorebinaria()
+a.insere(80)
+a.insere(50)
+a.insere(30)
+a.insere(100)
+print(a.buscaIterativa(100)) #Retorna (True, 100)
+print(a.buscaIterativa(40)) #Retorna False
                 
