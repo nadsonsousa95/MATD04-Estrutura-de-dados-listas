@@ -19,26 +19,7 @@ class Lista:
         p.prox = self.prim
         self.prim = p
         self.nelems += 1
-        return True
-        
-    # insere no final
-    def inserefinal (self, x):
-        if (self.consulta(x) or self.nelems == self.tammax):
-            return False
-        p = No(x)
-        if self.prim == None: # verifica se a lista está vazia
-            p.prox = self.prim
-            self.prim = p
-            self.nelems += 1
-            return True
-        else:
-            a = self.prim
-            while a != None: # busca o último elemento da lista
-                a = a.prox
-            a.prox = p
-            p.prox = None
-            self.nelems += 1
-            return True
+        return True         
         
     def consulta (self, x):
         p = self.prim
@@ -63,13 +44,31 @@ class Lista:
                 return True
             p = p.prox
         
+    def retornaMedia(self):
+        if self.prim == None:
+            return 0, False
+        contador = 0
+        SomaDados = 0
+        p = self.prim
+        while (p):
+            contador += 1
+            SomaDados += p.dado
+            p = p.prox
+        Media = SomaDados / contador
+        return Media, True
         
+        
+
 l = Lista(7)
-l.insereinicio(3)
-l.insereinicio(4)
-print(l.consulta(4)) # retorna True
-print(l.consulta(5)) # retorna False
-print(l.remove(4)) # retorna True
+print(l.insereinicio(3))
+print(l.insereinicio(4))
+print(l.insereinicio(5))
+print(l.remove(5))
+print(l.consulta(4))
+print(l.retornaMedia())
+
+
+
 
 
         

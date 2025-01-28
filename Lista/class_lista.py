@@ -51,12 +51,23 @@ class Lista:
             self.nelemens -= 1
 
     # Retorna a quantidade de números menores que x
-    def menores(self, x):
+    def qtdmenores(self, x):
         cont = 0
         for i in range(self.nelemens):
             if self.dados[i] < x:
                 cont += 1
         return cont
+    
+    #Retorne o menor elemento da lista
+    def retornamenor(self):
+        if self.nelemens == 0:
+            return False, -1
+        maior = self.dados[0]
+        for i in range(self.nelemens):
+            if self.dados[i] > self.dados[0]:
+                maior = self.dados[i]
+        return True, maior
+
 
     def imprimir(self):
         print(self.dados[:self.nelemens])
