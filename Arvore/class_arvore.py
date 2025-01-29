@@ -40,12 +40,21 @@ class Arvorebinaria:
             else:
                 self.insere_recursivo(x, no_atual.dir)
 
+    def retornaMenor(self):
+        no = self.raiz
+        while (no.esq != None):
+            no = no.esq
+        return no.dado
+
         
 a = Arvorebinaria()
 a.insere(80)
 a.insere(50)
 a.insere(30)
 a.insere(100)
+a.insere(10)
+a.insere(20)
 print(a.buscaIterativa(100)) #Retorna (True, 100)
 print(a.buscaIterativa(40)) #Retorna False
+print(a.retornaMenor())
                 
