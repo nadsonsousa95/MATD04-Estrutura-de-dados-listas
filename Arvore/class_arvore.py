@@ -40,13 +40,40 @@ class Arvorebinaria:
             else:
                 self.insere_recursivo(x, no_atual.dir)
 
-    def retornaMenor(self):
+
+    #Retorna menor valor de chave
+    def MenorValor(self):
         no = self.raiz
         while (no.esq != None):
             no = no.esq
         return no.dado
-
+    
+    #Retorna maior valor de chave
+    def MaiorValor(self):
+        no = self.raiz
+        while (no.dir != None):
+            no = no.dir
+        return no.dado
         
+    def percursoemOrdem(self, no):
+        if no != None:
+            self.percursoemOrdem(no.esq)
+            print(no.dado)
+            self.percursoemOrdem(no.dir)
+
+    def percursoPosOrdem(self, no):
+        if no != None:
+            self.percursoPosOrdem(no.esq)
+            self.percursoPosOrdem(no.dir)
+            print(no.dado)
+
+    def percursoPreOrdem(self, no):
+        if no != None:
+            print(no.dado)
+            self.percursoPreOrdem(no.esq)
+            self.percursoPreOrdem(no.dir)
+            
+
 a = Arvorebinaria()
 a.insere(80)
 a.insere(50)
@@ -54,7 +81,14 @@ a.insere(30)
 a.insere(100)
 a.insere(10)
 a.insere(20)
+a.insere(15)
 print(a.buscaIterativa(100)) #Retorna (True, 100)
 print(a.buscaIterativa(40)) #Retorna False
-print(a.retornaMenor())
-                
+print(a.MenorValor()) #Retorna 10
+print(a.MaiorValor()) #Retorna 100
+print(' ')
+a.percursoemOrdem(a.raiz)
+print(' ')
+a.percursoPreOrdem(a.raiz)                
+print(' ')
+a.percursoPosOrdem(a.raiz)
