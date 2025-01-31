@@ -4,6 +4,7 @@ class No:
         self.dado = x
         self.dir = None
         self.esq = None
+        self.pai = None
 
 class Arvorebinaria:
     def __init__(self):
@@ -18,42 +19,40 @@ class Arvorebinaria:
                 r = r.dir
         if r == None: 
             return False
-        else: return True, x        
+        else: return True      
         
 
-    def insere(self, x):
-        if self.raiz == None:
-            self.raiz = No(x)
-            return True
+    def inserir(self, valor):
+        if (self.buscaIterativa(valor) == True):
+            return False
+        y = None
+        no = No(valor)
+        x = self.raiz
+        while (x != None):
+            y = x
+            if no.dado < x.dado:
+                x = x.esq
+            else: x = x.dir
+        no.pai = y
+        if y == None:
+            self.raiz = no   #arvore vazia
+        elif no.dado < y.dado:
+            y.esq = no
         else:
-            self.insere_recursivo(x, self.raiz)
+            y.dir = no
 
-    def insere_recursivo(self, x, no_atual):
-        if x < no_atual.dado:
-            if no_atual.esq == None:
-                no_atual.esq = No(x)
-            else:
-                self.insere_recursivo(x, no_atual.esq)
-        else:
-            if no_atual.dir == None:
-                no_atual.dir = No(x)
-            else:
-                self.insere_recursivo(x, no_atual.dir)
-
-
-    #Retorna menor valor de chave
-    def MenorValor(self):
-        no = self.raiz
-        while (no.esq != None):
-            no = no.esq
-        return no.dado
+    def MenorValor(self, no):
+        if no != None:
+            while (no.esq != None):
+                no = no.esq
+            return no.dado
     
     #Retorna maior valor de chave
-    def MaiorValor(self):
-        no = self.raiz
-        while (no.dir != None):
-            no = no.dir
-        return no.dado
+    def MaiorValor(self, no):
+        if no != None:
+            while (no.dir != None):
+                no = no.dir
+            return no.dado
         
     def percursoemOrdem(self, no):
         if no != None:
@@ -72,23 +71,33 @@ class Arvorebinaria:
             print(no.dado)
             self.percursoPreOrdem(no.esq)
             self.percursoPreOrdem(no.dir)
-            
+
+    def sucessor(self, no):
+        if no.dir != None:
+            return self.MenorValor(no.dir)       
+        y = no.pai
+        while y != None and no == y.dir:
+            no = y
+            y = y.pai
+        return y
+
 
 a = Arvorebinaria()
-a.insere(80)
-a.insere(50)
-a.insere(30)
-a.insere(100)
-a.insere(10)
-a.insere(20)
-a.insere(15)
+a.inserir(80)
+a.inserir(50)
+a.inserir(30)
+a.inserir(100)
+a.inserir(10)
+a.inserir(20)
 print(a.buscaIterativa(100)) #Retorna (True, 100)
 print(a.buscaIterativa(40)) #Retorna False
-print(a.MenorValor()) #Retorna 10
-print(a.MaiorValor()) #Retorna 100
+print(a.MenorValor(a.raiz)) #Retorna 10
+print(a.MaiorValor(a.raiz)) #Retorna 100
 print(' ')
 a.percursoemOrdem(a.raiz)
 print(' ')
 a.percursoPreOrdem(a.raiz)                
 print(' ')
 a.percursoPosOrdem(a.raiz)
+print(' ')
+print(a.sucessor(a.raiz))
